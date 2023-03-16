@@ -1,2 +1,8 @@
-package com.example.superbank;public class BankService {
+package com.example.superbank;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class BankService {
+
 }
