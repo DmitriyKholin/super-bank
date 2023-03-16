@@ -1,6 +1,5 @@
 package com.example.superbank;
 
-import lombok.val;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
