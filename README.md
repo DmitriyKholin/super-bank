@@ -1,2 +1,2 @@
-Money transfer service from one bank account to another
+WEB-Service for money transfer from one bank account to another
 # Spring-Boot # Maven
