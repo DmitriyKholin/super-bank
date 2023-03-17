@@ -19,10 +19,31 @@ public class BankService {
     }
 
     public BigDecimal addMoney(Long to, BigDecimal amount) {
-        return repository.save(to, amount);
+        BigDecimal currentBalance = repository.getBalanceForId(to);
+        if (currentBalance == null){
+            repository.save(to, amount);
+            return amount;
+        } else {
+            BigDecimal updatedBalance = currentBalance.add(amount);
+            repository.save(to, updatedBalance);
+            return updatedBalance;
+        }
+
     }
 
     public void makeTransfer(TransferBalance transferBalance) {
+         BigDecimal fromBalance = repository.getBalanceFromId(transferBalance.getFrom());
+         BigDecimal toBalance = repository.getBalanceFromId(transferBalance.getTo());
+         if (fromBalance == null || toBalance == null) throw new IllegalArgumentException("no ids");
+         if (transferBalance.getAmount().compareTo(fromBalance) > 0) throw new IllegalArgumentException("no money");
+
+         BigDecimal updatedFromBalance = fromBalance.subtract(transferBalance.getAmount());
+         BigDecimal updatedToBalance = toBalance.add(transferBalance.getAmount());
+         repository.save(transferBalance.getFrom(), updatedFromBalance);
+         repository.save(transferBalance.getTo(), updatedToBalance);
+
+
+
 
     }
 }

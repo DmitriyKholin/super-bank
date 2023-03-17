@@ -10,19 +10,18 @@ import java.util.Map;
 public class BalanceRepository {
     private final Map<Long, BigDecimal> storage = new HashMap<>(Map.of(1L,BigDecimal.TEN));
 
-    public BigDecimal getBalanceFromId(Long accountId) {
-       return storage.get(accountId);
+    public BigDecimal getBalanceForId(Long to) {
+        Long accountId = null;
+        return storage.get(accountId);
     }
 
-    public BigDecimal save(Long to, BigDecimal amount) {
-        BigDecimal currentBalance = storage.get(to);
-        if (currentBalance == null) {
-            storage.put(to, amount);
-            return amount;
-        }else {
-            final BigDecimal updateBalance = currentBalance.add(amount);
-            storage.put(to, updateBalance);
-        }
+    public void save(Long id, BigDecimal amount) {
+        storage.put(id, amount);
+
+    }
+
+    public BigDecimal getBalanceFromId(Long accountId) {
+        return null;
     }
 }
 
