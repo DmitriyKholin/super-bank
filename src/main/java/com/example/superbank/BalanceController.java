@@ -12,7 +12,6 @@ import java.math.BigDecimal;
 public class BalanceController {
 
     private final BankService bankService;
-
     @GetMapping("/{accountId}")
     public BigDecimal getBalance(@PathVariable Long accountId) {
         return bankService.getBalance(accountId);

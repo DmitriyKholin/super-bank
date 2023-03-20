@@ -8,4 +8,5 @@ public class TransferBalance {
     private Long from;
     private Long to;
     private BigDecimal amount;
+
 }

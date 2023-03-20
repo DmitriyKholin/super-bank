@@ -14,7 +14,6 @@ public class BalanceRepository {
         Long accountId = null;
         return storage.get(accountId);
     }
-
     public void save(Long id, BigDecimal amount) {
         storage.put(id, amount);
 
